@@ -31,7 +31,6 @@ import hudson.model.BuildListener;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.Run;
-import hudson.plugins.timestamper.Timestamp;
 import hudson.tasks.BuildWrapper;
 import hudson.tasks.BuildWrapperDescriptor;
 
@@ -39,6 +38,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.apache.commons.lang.time.FastDateFormat;
@@ -117,7 +117,11 @@ public final class TimestamperBuildWrapper extends BuildWrapper {
             // TODO get global configuration which defines timeFormat then
             String template = "[%s] [%s] ";
             String systemTime = FastDateFormat.getInstance(DEFAULT_TIME_FORMAT).format(new Date(timestamp.millisSinceEpoch));
-            String elapsedTime = FastDateFormat.getInstance(DEFAULT_TIME_FORMAT).format(new Date(timestamp.elapsedMillis));
+            String elapsedTime = String.format("%d:%d.%d",
+                TimeUnit.MILLISECONDS.toMinutes(timestamp.elapsedMillis),
+                TimeUnit.MILLISECONDS.toSeconds(timestamp.elapsedMillis) -
+                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timestamp.elapsedMillis)),
+                timestamp.elapsedMillis % 1000);
             return String.format(template, systemTime, elapsedTime);
         }
 
@@ -127,7 +131,7 @@ public final class TimestamperBuildWrapper extends BuildWrapper {
         @Override
         protected void eol(byte[] b, int len) throws IOException {
             OutputStreamWriter streamWriter = new OutputStreamWriter(delegate);
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis() - build.getStartTimeInMillis(), System
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis() - build.getTimeInMillis(), System
                 .currentTimeMillis());
             streamWriter.write(format(timestamp));
             streamWriter.flush();
