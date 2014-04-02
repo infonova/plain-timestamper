@@ -38,7 +38,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import org.apache.commons.lang.time.FastDateFormat;
@@ -115,14 +114,9 @@ public final class TimestamperBuildWrapper extends BuildWrapper {
         private String format(Timestamp timestamp) {
             // Jenkins.
             // TODO get global configuration which defines timeFormat then
-            String template = "[%s] [%s] ";
+            String template = "[%s] ";
             String systemTime = FastDateFormat.getInstance(DEFAULT_TIME_FORMAT).format(new Date(timestamp.millisSinceEpoch));
-            String elapsedTime = String.format("%d:%d.%d",
-                TimeUnit.MILLISECONDS.toMinutes(timestamp.elapsedMillis),
-                TimeUnit.MILLISECONDS.toSeconds(timestamp.elapsedMillis) -
-                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timestamp.elapsedMillis)),
-                timestamp.elapsedMillis % 1000);
-            return String.format(template, systemTime, elapsedTime);
+            return String.format(template, systemTime);
         }
 
         /**
