@@ -8,14 +8,14 @@
 
     <artifactId>plain-timestamper</artifactId>
     <packaging>hpi</packaging>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <name>plain-Timestamper</name>
     <description>Adds timestamps to the Console Output</description>
 
     <scm>
-        <connection>scm:svn:http://grzsvn01.infonova.at/ise/tools/jenkins/plugins/plain-timestamper/tags/plain-timestamper-1.1</connection>
-        <developerConnection>scm:svn:http://grzsvn01.infonova.at/ise/tools/jenkins/plugins/plain-timestamper/tags/plain-timestamper-1.1</developerConnection>
-      <url>https://svn.jenkins-ci.org/tags/plain-timestamper-1.1</url>
+        <connection>scm:svn:http://grzsvn01.infonova.at/ise/tools/jenkins/plugins/plain-timestamper/trunk</connection>
+        <developerConnection>scm:svn:http://grzsvn01.infonova.at/ise/tools/jenkins/plugins/plain-timestamper/trunk</developerConnection>
+      <url>https://svn.jenkins-ci.org/trunk/hudson/plugins/plain-timestamper/</url>
   </scm>
 
     <distributionManagement>
