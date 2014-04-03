@@ -153,7 +153,7 @@ public final class TimestamperBuildWrapper extends BuildWrapper {
          */
         @Override
         public String getDisplayName() {
-            return "displayname";
+            return "plain text timestamp";
             //            return Messages.DisplayName();
         }
 
