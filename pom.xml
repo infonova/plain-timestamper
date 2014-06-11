@@ -13,8 +13,8 @@
     <description>Adds timestamps to the Console Output</description>
 
     <scm>
-        <connection>scm:svn:http://grzsvn01.infonova.at/ise/tools/jenkins/plugins/plain-timestamper/trunk</connection>
-        <developerConnection>scm:svn:http://grzsvn01.infonova.at/ise/tools/jenkins/plugins/plain-timestamper/trunk</developerConnection>
+        <connection>scm:git:ssh://git.infonova.at:29418/jenkins/plugins/plain-timestamper.git</connection>
+        <developerConnection>scm:git:ssh://git.infonova.at:29418/jenkins/plugins/plain-timestamper.git</developerConnection>
       <url>https://svn.jenkins-ci.org/trunk/hudson/plugins/plain-timestamper/</url>
   </scm>
 
