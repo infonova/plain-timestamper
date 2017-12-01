@@ -45,10 +45,6 @@ import java.util.logging.Logger;
 /**
  * Build wrapper that decorates the build's logger to record time-stamps as each
  * line is logged.
- * <p>
- * Note: The Configuration Slicing Plugin depends on this class.
- *
- * @author Steven G. Brown
  */
 public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements Serializable{
 
@@ -79,19 +75,6 @@ public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements
         return new ConsoleLogFilterImpl(build);
     }
 
-/*    *//**
-     * {@inheritDoc}
-     *//*
-    @SuppressWarnings("rawtypes")
-    @Override
-    public Environment setUp(AbstractBuild build, Launcher launcher, BuildListener listener)
-            throws IOException, InterruptedException {
-        // Jenkins requires this method to be overridden.
-        return new Environment() {
-            // No tear down behaviour or additional environment variables.
-        };
-    }*/
-
     /**
      * Registers {@link TimestamperBuildWrapper} as a {@link BuildWrapper}.
      */
@@ -103,8 +86,7 @@ public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements
          */
         @Override
         public String getDisplayName() {
-            return "plain text timestamp";
-            //            return Messages.DisplayName();
+            return Messages.DisplayName();
         }
 
         /**
