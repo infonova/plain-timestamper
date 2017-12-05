@@ -19,10 +19,10 @@
     </properties>
 
     <scm>
-        <connection>scm:git:ssh://git.infonova.at:29418/jenkins/plugins/plain-timestamper.git</connection>
-        <developerConnection>scm:git:ssh://git.infonova.at:29418/jenkins/plugins/plain-timestamper.git</developerConnection>
-      <url>https://svn.jenkins-ci.org/trunk/hudson/plugins/plain-timestamper/</url>
-  </scm>
+        <connection>scm:git:git://github.com/infonova/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:infonova/${project.artifactId}.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <distributionManagement>
         <repository>
@@ -46,6 +46,15 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
                 </configuration>
             </plugin>
         </plugins>

@@ -115,9 +115,9 @@ public class TimestamperStep extends AbstractStepImpl {
     /**
      * Serve the help file.
      *
-     * @param request
-     * @param response
-     * @throws IOException
+     * @param request .
+     * @param response .
+     * @throws IOException .
      */
     public void doHelp(StaplerRequest request, StaplerResponse response) throws IOException {
       response.setContentType("text/html;charset=UTF-8");

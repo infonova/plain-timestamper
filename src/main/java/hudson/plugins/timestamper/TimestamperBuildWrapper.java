@@ -48,6 +48,8 @@ import java.util.logging.Logger;
  */
 public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements Serializable {
 
+    private static final long serialVersionUID = 817268125L;
+
     private static final Logger LOGGER = Logger.getLogger(TimestamperBuildWrapper.class.getName());
 
     /**

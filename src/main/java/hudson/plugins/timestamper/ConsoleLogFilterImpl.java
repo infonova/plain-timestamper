@@ -10,12 +10,14 @@ import java.io.Serializable;
 
 public class ConsoleLogFilterImpl extends ConsoleLogFilter implements Serializable {
 
+    private static final long serialVersionUID = 817268124L;
+
     public ConsoleLogFilterImpl(Run<?, ?> build) {
     }
 
     @Override
-    public OutputStream decorateLogger(AbstractBuild abstractBuild, OutputStream logger) throws IOException, InterruptedException {
-        return new TimestamperOutputStream(logger, abstractBuild);
+    public OutputStream decorateLogger(Run run, OutputStream logger) throws IOException, InterruptedException {
+        return new TimestamperOutputStream(logger);
     }
 }
 

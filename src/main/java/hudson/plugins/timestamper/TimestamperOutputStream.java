@@ -22,17 +22,13 @@ public class TimestamperOutputStream extends LineTransformationOutputStream {
      * The delegate output stream.
      */
     private final OutputStream delegate;
-    private Run<?, ?> build;
-    private OutputStreamWriter streamWriter;
 
     /**
      * @param delegate
      *            the delegate output stream
      */
-    TimestamperOutputStream(OutputStream delegate, Run<?, ?> build) {
+    TimestamperOutputStream(OutputStream delegate) {
         this.delegate = checkNotNull(delegate);
-        this.streamWriter = new OutputStreamWriter(delegate);
-        this.build = build;
     }
 
     private String format(long currentTimeInMillis) {
@@ -48,7 +44,7 @@ public class TimestamperOutputStream extends LineTransformationOutputStream {
      */
     @Override
     protected void eol(byte[] b, int len) throws IOException {
-        OutputStreamWriter streamWriter = new OutputStreamWriter(delegate);
+        OutputStreamWriter streamWriter = new OutputStreamWriter(delegate, "UTF-8");
         streamWriter.write(format(System.currentTimeMillis()));
         streamWriter.flush();
         delegate.write(b, 0, len);
