@@ -46,7 +46,9 @@ import java.util.logging.Logger;
  * Build wrapper that decorates the build's logger to record time-stamps as each
  * line is logged.
  */
-public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements Serializable{
+public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements Serializable {
+
+    private static final long serialVersionUID = 817268125L;
 
     private static final Logger LOGGER = Logger.getLogger(TimestamperBuildWrapper.class.getName());
 
@@ -98,13 +100,4 @@ public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements
         }
     }
 
-    private class ConsoleLogFilterImpl extends ConsoleLogFilter implements Serializable {
-        public ConsoleLogFilterImpl(Run<?, ?> build) {
-        }
-
-        @Override
-        public OutputStream decorateLogger(AbstractBuild abstractBuild, OutputStream logger) throws IOException, InterruptedException {
-            return new TimestamperOutputStream(logger, abstractBuild);
-        }
-    }
 }
