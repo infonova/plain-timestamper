@@ -19,8 +19,8 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git://github.com/infonova/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:git@github.com:infonova/${project.artifactId}.git</developerConnection>
+        <connection>scm:git:https://github.com/infonova/plain-timestamper.git</connection>
+        <developerConnection>scm:git:https://github.com/infonova/plain-timestamper.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
