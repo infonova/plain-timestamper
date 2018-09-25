@@ -1,13 +1,12 @@
 package hudson.plugins.timestamper;
 
 import hudson.console.LineTransformationOutputStream;
-import hudson.model.Run;
 import org.apache.commons.lang.time.FastDateFormat;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.Date;
+import jenkins.model.GlobalConfiguration;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -16,12 +15,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public class TimestamperOutputStream extends LineTransformationOutputStream {
 
-    private static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
-
     /**
      * The delegate output stream.
      */
     private final OutputStream delegate;
+    private final String timestampFormat;
 
     /**
      * @param delegate
@@ -29,13 +27,18 @@ public class TimestamperOutputStream extends LineTransformationOutputStream {
      */
     TimestamperOutputStream(OutputStream delegate) {
         this.delegate = checkNotNull(delegate);
+        TimestamperConfig timestamperConfig = GlobalConfiguration.all().get(TimestamperConfig.class);
+        if(timestamperConfig != null) {
+            timestampFormat =  timestamperConfig.getSystemTimeFormat();
+        } else {
+            timestampFormat = TimestamperConfig.DEFAULT_TIMESTAMP_FORMAT;
+        }
     }
 
     private String format(long currentTimeInMillis) {
         // Jenkins.
-        // TODO get global configuration which defines timeFormat then
         String template = "[%s] ";
-        String systemTime = FastDateFormat.getInstance(DEFAULT_TIME_FORMAT).format(currentTimeInMillis);
+        String systemTime = FastDateFormat.getInstance(timestampFormat).format(currentTimeInMillis);
         return String.format(template, systemTime);
     }
 

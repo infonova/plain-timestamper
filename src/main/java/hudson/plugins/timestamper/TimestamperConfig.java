@@ -51,12 +51,12 @@ public final class TimestamperConfig extends GlobalConfiguration {
     /**
      * The default {@link #timestampFormat}.
      */
-    private static final String DEFAULT_TIMESTAMP_FORMAT = "'<b>'HH:mm:ss'</b> '";
+    public static final String DEFAULT_TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
      * The default {@link #elapsedTimeFormat}.
      */
-    private static final String DEFAULT_ELAPSED_TIME_FORMAT = "'<b>'HH:mm:ss.S'</b> '";
+    public static final String DEFAULT_ELAPSED_TIME_FORMAT = "'<b>'HH:mm:ss.S'</b> '";
 
     /**
      * The chosen format for displaying the system clock time, as recognised by
