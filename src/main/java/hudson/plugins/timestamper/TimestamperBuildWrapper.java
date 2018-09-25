@@ -28,7 +28,6 @@ import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
 import hudson.console.ConsoleLogFilter;
-import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.Run;
 import hudson.model.TaskListener;
@@ -38,9 +37,7 @@ import jenkins.tasks.SimpleBuildWrapper;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.Serializable;
-import java.util.logging.Logger;
 
 /**
  * Build wrapper that decorates the build's logger to record time-stamps as each
@@ -49,8 +46,6 @@ import java.util.logging.Logger;
 public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements Serializable {
 
     private static final long serialVersionUID = 817268125L;
-
-    private static final Logger LOGGER = Logger.getLogger(TimestamperBuildWrapper.class.getName());
 
     /**
      * Create a new {@link TimestamperBuildWrapper}.
@@ -67,7 +62,6 @@ public final class TimestamperBuildWrapper extends SimpleBuildWrapper implements
                       TaskListener listener, EnvVars initialEnvironment) throws IOException, InterruptedException {
         // nothing to do
     }
-
 
     /**
      * {@inheritDoc}

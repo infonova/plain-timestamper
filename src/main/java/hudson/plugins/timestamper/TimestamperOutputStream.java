@@ -29,14 +29,13 @@ public class TimestamperOutputStream extends LineTransformationOutputStream {
         this.delegate = checkNotNull(delegate);
         TimestamperConfig timestamperConfig = GlobalConfiguration.all().get(TimestamperConfig.class);
         if(timestamperConfig != null) {
-            timestampFormat =  timestamperConfig.getSystemTimeFormat();
+            this.timestampFormat = timestamperConfig.getSystemTimeFormat();
         } else {
-            timestampFormat = TimestamperConfig.DEFAULT_TIMESTAMP_FORMAT;
+            this.timestampFormat = TimestamperConfig.DEFAULT_TIMESTAMP_FORMAT;
         }
     }
 
     private String format(long currentTimeInMillis) {
-        // Jenkins.
         String template = "[%s] ";
         String systemTime = FastDateFormat.getInstance(timestampFormat).format(currentTimeInMillis);
         return String.format(template, systemTime);
