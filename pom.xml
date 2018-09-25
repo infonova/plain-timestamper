@@ -8,7 +8,7 @@
 
     <artifactId>plain-timestamper</artifactId>
     <packaging>hpi</packaging>
-    <version>1.3</version>
+    <version>1.4-SNAPSHOT</version>
     <name>plain-Timestamper</name>
     <description>Adds timestamps to the Console Output</description>
 
@@ -21,7 +21,7 @@
     <scm>
         <connection>scm:git:https://github.com/infonova/plain-timestamper.git</connection>
         <developerConnection>scm:git:https://github.com/infonova/plain-timestamper.git</developerConnection>
-        <tag>plain-timestamper-1.3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
