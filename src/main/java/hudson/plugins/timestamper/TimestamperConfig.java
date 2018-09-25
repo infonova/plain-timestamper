@@ -23,20 +23,13 @@
  * THE SOFTWARE.
  */
 package hudson.plugins.timestamper;
-
 import hudson.Extension;
 import hudson.model.Descriptor;
-
 import java.text.SimpleDateFormat;
-
 import javax.annotation.CheckForNull;
-
 import jenkins.model.GlobalConfiguration;
 import net.sf.json.JSONObject;
-
-import org.apache.commons.lang.time.DurationFormatUtils;
 import org.kohsuke.stapler.StaplerRequest;
-
 import com.google.common.base.Objects;
 
 /**
@@ -54,23 +47,11 @@ public final class TimestamperConfig extends GlobalConfiguration {
     public static final String DEFAULT_TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
-     * The default {@link #elapsedTimeFormat}.
-     */
-    public static final String DEFAULT_ELAPSED_TIME_FORMAT = "'<b>'HH:mm:ss.S'</b> '";
-
-    /**
      * The chosen format for displaying the system clock time, as recognised by
      * {@link SimpleDateFormat}.
      */
     @CheckForNull
     private String timestampFormat;
-
-    /**
-     * The chosen format for displaying the elapsed time, as recognised by
-     * {@link DurationFormatUtils}.
-     */
-    @CheckForNull
-    private String elapsedTimeFormat;
 
     /**
      * Constructor.
@@ -99,25 +80,6 @@ public final class TimestamperConfig extends GlobalConfiguration {
     }
 
     /**
-     * Get the format for displaying the elapsed time.
-     *
-     * @return the elapsed time format
-     */
-    public String getElapsedTimeFormat() {
-        return Objects.firstNonNull(elapsedTimeFormat, DEFAULT_ELAPSED_TIME_FORMAT);
-    }
-
-    /**
-     * Set the format for displaying the elapsed time.
-     *
-     * @param elapsedTimeFormat
-     *          the elapsed time format in {@link DurationFormatUtils} pattern
-     */
-    public void setElapsedTimeFormat(@CheckForNull String elapsedTimeFormat) {
-        this.elapsedTimeFormat = elapsedTimeFormat;
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -127,5 +89,4 @@ public final class TimestamperConfig extends GlobalConfiguration {
         save();
         return true;
     }
-
 }

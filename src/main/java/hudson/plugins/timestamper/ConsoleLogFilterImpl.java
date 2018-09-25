@@ -1,7 +1,6 @@
 package hudson.plugins.timestamper;
 
 import hudson.console.ConsoleLogFilter;
-import hudson.model.AbstractBuild;
 import hudson.model.Run;
 
 import java.io.IOException;
